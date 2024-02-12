@@ -82,8 +82,8 @@
                                     </a>
                                 </li>
                                 <li
-                                    class="sidebar-item @if(Request::is("staffing/dashboard")) active @endif">
-                                    <a href="index.html" class='sidebar-link'>
+                                    class="sidebar-item @if(URLHelper::has('user')) active @endif">
+                                    <a href="{{ route('staffing.user.index') }}" class='sidebar-link'>
                                         <i class="bi bi-people-fill"></i>
                                         <span>Pegawai</span>
                                     </a>

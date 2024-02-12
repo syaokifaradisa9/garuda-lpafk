@@ -12,7 +12,8 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'name' => "Muhammad Syaoki Faradisa",
-                'phone' => '',
+                'phone' => '082149411670',
+                'nip' => "1234567890123",
                 'email' => 'syaokifaradisa09@gmail.com',
                 'unit_id' => 1,
             ]
@@ -23,6 +24,7 @@ class UserSeeder extends Seeder
                 'name' => $user['name'],
                 'phone' => $user['phone'],
                 'email' => $user['email'],
+                'nip' => $user['nip'],
                 'unit_id' => $user['unit_id'],
                 'password' => bcrypt('lpfkbjb123'),
             ]);
