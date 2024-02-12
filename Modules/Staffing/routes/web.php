@@ -14,7 +14,15 @@ Route::prefix('staffing')
             ->name('unit.')
             ->controller(UnitController::class)
             ->group(function(){
+                Route::get('datatable', 'datatable');
                 Route::get('/', 'index')->name('index');
+                Route::get('create', 'create')->name('create');
+                Route::post('store', 'store')->name('store');
+                Route::prefix('{id}')->group(function(){
+                    Route::get('edit', 'edit')->name('edit');
+                    Route::put('update', 'update')->name('update');
+                    Route::get('delete', 'delete');
+                });
             }
         );
     }
