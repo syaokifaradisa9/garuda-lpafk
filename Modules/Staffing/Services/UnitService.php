@@ -14,6 +14,10 @@ class UnitService{
         }
     }
 
+    public function getAllUnit(){
+        return Unit::select('id', 'name')->orderBy('name')->get();
+    }
+
     public function store($name){
         try{
             Unit::create([
