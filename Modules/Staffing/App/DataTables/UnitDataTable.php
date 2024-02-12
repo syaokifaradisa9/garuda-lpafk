@@ -3,10 +3,11 @@
 namespace Modules\Staffing\App\DataTables;
 
 use App\Models\Unit;
-use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\EloquentDataTable;
-use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Services\DataTable;
+use Yajra\DataTables\Html\Builder as HtmlBuilder;
+use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 
 class UnitDataTable extends DataTable
 {
@@ -68,10 +69,16 @@ class UnitDataTable extends DataTable
             [
                 'title' => 'Jumlah Pegawai',
                 'data' => 'user_count',
+                'orderable' => false,
+                'searchable' => false,
             ],
             [
                 'title' => 'Aksi',
                 'data' => 'action',
+                'orderable' => false,
+                'searchable' => false,
+                'exportable' => false,
+                'printable' => false,
             ]
         ];
     }
