@@ -1,0 +1,11 @@
+{
+    "name": "Staffing",
+    "alias": "staffing",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Staffing\\App\\Providers\\StaffingServiceProvider"
+    ],
+    "files": []
+}

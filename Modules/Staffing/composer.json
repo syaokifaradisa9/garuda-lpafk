@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/staffing",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Staffing\\": "",
+            "Modules\\Staffing\\App\\": "app/",
+            "Modules\\Staffing\\Database\\Factories\\": "database/factories/",
+            "Modules\\Staffing\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Staffing\\Tests\\": "tests/"
+        }
+    }
+}

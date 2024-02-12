@@ -41,6 +41,13 @@
                 --box-shadow-color: rgba(206, 178, 252, 0.48);
             }
 
+            .staffing {
+                --bg-color: #BFD8AF;
+                --bg-color-light: #99BC85;
+                --text-color-hover: #fff;
+                --box-shadow-color: #99BC85;
+            }
+
             .card {
                 width: 220px;
                 height: 321px;
@@ -142,6 +149,14 @@
 	<body>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
+        <a href="#" class="card archieve">
+            <div class="overlay"></div>
+            <img
+                style="width: 130px"
+                src="{{ asset('assets/icons/archieve.png') }}">
+            <p>Arsiparis</p>
+        </a>
+
         <a href="#" class="card helpdesk">
             <div class="overlay"></div>
             <img
@@ -158,12 +173,12 @@
             <p>Inventaris</p>
         </a>
 
-        <a href="#" class="card archieve">
+        <a href="{{ route('staffing.index') }}" class="card staffing">
             <div class="overlay"></div>
             <img
                 style="width: 130px"
-                src="{{ asset('assets/icons/archieve.png') }}">
-            <p>Arsiparis</p>
+                src="{{ asset('assets/icons/staffing.png') }}">
+            <p>Kepegawaian</p>
         </a>
 	</body>
 </html>

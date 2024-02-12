@@ -1,0 +1,1 @@
+@extends('staffing::app')
