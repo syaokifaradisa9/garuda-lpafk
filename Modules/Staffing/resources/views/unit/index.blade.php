@@ -27,19 +27,7 @@
             <hr>
         </div>
         <div class="card-body">
-            <table class="table table-striped" id="table1">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Unit</th>
-                        <th>Jumlah Pegawai</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
+            {!! $dataTable->table() !!}
         </div>
     </div>
 @endsection

@@ -3,17 +3,30 @@
     'pageTitle' => 'Manajemen Data Unit'
 ])
 
+@php
+    $cardTitle = URLHelper::has('edit') ? 'Form Edit Unit' : 'Form Tambah Unit';
+    $formUrl = URLHelper::has('edit') ? route('staffing.unit.update', ['id' => $unit->id]) : route('staffing.unit.store');
+@endphp
+
 @section('content')
+    @if (Session::has('success'))
+        <div class="alert alert-success mb-2">{{ Session::get('success') }}</div>
+    @elseif(Session::has('error'))
+        <div class="alert alert-danger mb-2">{{ Session::get('error') }}</div>
+    @endif
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">
-                Form Tambah Unit
+                {{ $cardTitle }}
             </h5>
             <hr>
         </div>
         <div class="card-body">
-            <form action="{{ route('staffing.unit.store') }}" method="post">
+            <form action="{{ $formUrl }}" method="POST">
                 @csrf
+                @if(URLHelper::has('edit'))
+                    @method('PUT')
+                @endif
 
                 <div class="w-100">
                     <h6>Nama Unit</h6>
@@ -21,7 +34,8 @@
                         name="name"
                         class="form-control @error('name') is-invalid @enderror"
                         type="text"
-                        placeholder="Masukkan Nama Unit">
+                        placeholder="Masukkan Nama Unit"
+                        value="{{ $unit->name ?? '' }}">
                     @error('name')
                         <span class="invalid-feedback mt-2" role="alert">
                             <strong>{{ $message }}</strong>
