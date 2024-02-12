@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Staffing\App\Http\Controllers\DashboardController;
 use Modules\Staffing\App\Http\Controllers\UnitController;
+use Modules\Staffing\App\Http\Controllers\UserController;
 
 Route::prefix('staffing')
     ->name('staffing.')
@@ -23,6 +24,15 @@ Route::prefix('staffing')
                     Route::put('update', 'update')->name('update');
                     Route::get('delete', 'delete');
                 });
+            }
+        );
+
+        // Route Management User
+        Route::prefix('user')
+            ->name('user.')
+            ->controller(UserController::class)
+            ->group(function(){
+                Route::get('/', 'index')->name('index');
             }
         );
     }
