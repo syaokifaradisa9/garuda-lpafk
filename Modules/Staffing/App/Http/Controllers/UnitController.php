@@ -61,4 +61,22 @@ class UnitController extends Controller
                     ->with('error', $e->getMessage());
         }
     }
+
+    public function delete($id){
+        try{
+            $this->service->verifyUnitDataExistsById($id);
+            $this->service->delete($id);
+            return response()->json([
+                'code' => 200,
+                'status' => 'success',
+                'message' =>'Sukses menghapus unit'
+            ]);
+        }catch(Exception $e){
+            return response()->json([
+                'code' => $e->getCode(),
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
 }

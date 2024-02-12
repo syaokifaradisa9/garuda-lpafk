@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->string('password');
-            $table->foreignIdFor(Unit::class)->constrained();
+            $table->foreignIdFor(Unit::class)->nullable()->constrained();
         });
     }
 

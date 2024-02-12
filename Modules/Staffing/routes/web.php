@@ -21,6 +21,7 @@ Route::prefix('staffing')
                 Route::prefix('{id}')->group(function(){
                     Route::get('edit', 'edit')->name('edit');
                     Route::put('update', 'update')->name('update');
+                    Route::get('delete', 'delete');
                 });
             }
         );

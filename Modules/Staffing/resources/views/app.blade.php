@@ -121,6 +121,10 @@
                 </footer>
             </div>
         </div>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="{{ asset('assets/js/utils/alert.js') }}"></script>
+
         <script src="{{ asset('assets/js/components/dark.js') }}"></script>
         <script src="{{ asset('assets/js/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
         <script src="{{ asset('assets/js/app.js') }}"></script>
@@ -131,5 +135,7 @@
         @if($dataTable ?? false)
             {!! $dataTable->scripts() !!}
         @endif
+
+        @yield('extends_scripts')
     </body>
 </html>

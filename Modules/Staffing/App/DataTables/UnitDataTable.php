@@ -30,7 +30,7 @@ class UnitDataTable extends DataTable
                 return "
                     <a href='$editRoute' class='text-primary'>Edit</a>
                     | 
-                    <a href='$editRoute' class='text-danger'>Hapus</a>
+                    <a href='' class='text-danger btn-delete' id='$unit->id'>Hapus</a>
                 ";
             });
     }

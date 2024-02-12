@@ -3,7 +3,9 @@
 namespace Modules\Staffing\Services;
 
 use App\Models\Unit;
+use App\Models\User;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class UnitService{
     public function verifyUnitDataExistsById($id){
@@ -28,6 +30,21 @@ class UnitService{
                 'name' => $name,
             ]);
         }catch(Exception $e){
+            throw new Exception($e, 500);
+        }
+    }
+
+    public function delete($id){
+        DB::beginTransaction();
+        try{
+            Unit::find($id)->delete();
+            User::whereUnitId($id)->update([
+                'unit_id' => null,
+            ]);
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollBack();
             throw new Exception($e, 500);
         }
     }
