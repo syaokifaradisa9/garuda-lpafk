@@ -31,3 +31,37 @@
         </div>
     </div>
 @endsection
+
+@section('extends_scripts')
+    <script>
+        $(document).ready(function(){
+            $(document).on('click', '.btn-delete', function(event){
+                event.preventDefault();
+                var userId = $(this).attr('id');
+                
+                confirmAlert(
+                    "Konfirmasi Hapus Data",
+                    "Yakin menghapus data?",
+                    async function(){
+                        console.log(`${window.location.href}/${userId}/delete`);
+                        const response = await fetch(
+                            `${window.location.href}/${userId}/delete`,
+                            {
+                                method: "GET",
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            }
+                        );
+            
+                        const json = await response.json();
+                        Swal.fire({icon: json.status, title: json.title, text: json.message});
+                        if(json.status == 'success'){
+                            $('#user-datatable').DataTable().ajax.reload();
+                        }
+                    }
+                );
+            });
+        });
+    </script>
+@endsection

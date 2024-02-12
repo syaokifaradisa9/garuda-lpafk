@@ -60,7 +60,7 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, $id){
         try{
-            $this->service->verifyUnitDataExistsById($id);
+            $this->service->verifyUserDataExistsById($id);
             $this->service->update(
                 $id,
                 $request->name,
@@ -76,6 +76,24 @@ class UserController extends Controller
             return back()
                     ->withInput()
                     ->with('error', $e->getMessage());
+        }
+    }
+
+    public function delete($id){
+        try{
+            $this->service->verifyUserDataExistsById($id);
+            $this->service->delete($id);
+            return response()->json([
+                'code' => 200,
+                'status' => 'success',
+                'message' =>'Sukses menghapus pegawai'
+            ]);
+        }catch(Exception $e){
+            return response()->json([
+                'code' => $e->getCode(),
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
         }
     }
 }

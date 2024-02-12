@@ -6,7 +6,7 @@ use App\Models\User;
 use Exception;
 
 class UserService{
-    public function verifyUnitDataExistsById($id){
+    public function verifyUserDataExistsById($id){
         if(!User::where('id', $id)->exists()){
             throw new Exception('data pegawai tidak ada', 404);
         }
@@ -36,6 +36,14 @@ class UserService{
                 'nip' => $nip,
                 'unit_id' => $unitId,
             ]);
+        }catch(Exception $e){
+            throw new Exception($e, 500);
+        }
+    }
+
+    public function delete($id){
+        try{
+            User::find($id)->delete();
         }catch(Exception $e){
             throw new Exception($e, 500);
         }
