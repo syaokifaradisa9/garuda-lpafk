@@ -68,6 +68,13 @@ class InventoryController extends Controller
         }
     }
 
+    public function duplicate($id){
+        $inventory = $this->service->getById($id);
+        $units = $this->unitService->getAllUnit();
+
+        return view('inventory::inventory.create', compact('units', 'inventory'));
+    }
+
     public function delete($id){
         try{
             $this->service->verifyInventoryDataExistsById($id);
