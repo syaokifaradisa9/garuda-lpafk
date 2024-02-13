@@ -89,6 +89,26 @@
                                     </a>
                                 </li>
                             </ul>
+
+                            <ul class="menu">
+                                <li class="sidebar-title">
+                                    Setting
+                                </li>
+                                <li
+                                    class="sidebar-item @if(URLHelper::has('unit')) active @endif">
+                                    <a href="{{ route('gateway') }}" class='sidebar-link'>
+                                        <i class="bi bi-arrow-left-right"></i>
+                                        <span>Ganti Aplikasi</span>
+                                    </a>
+                                </li>
+                                <li
+                                    class="sidebar-item @if(URLHelper::has('user')) active @endif">
+                                    <a href="{{ route('logout') }}" class='sidebar-link'>
+                                        <i class="bi bi-box-arrow-left"></i>
+                                        <span>Logout</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
