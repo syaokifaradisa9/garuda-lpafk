@@ -4,6 +4,7 @@ namespace Modules\Inventory\Services;
 
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Modules\Inventory\App\DataTransferObjects\InventoryDto;
 use Modules\Inventory\App\Models\Inventory;
 use Modules\Inventory\App\Models\InventorySharing;
 
@@ -24,16 +25,16 @@ class InventoryService{
         ];
     }
 
-    public function store($name, $unitId, $type, $owners){
+    public function store(InventoryDto $inventoryDto){
         DB::beginTransaction();
         try{
             $inventory = Inventory::create([
-                'name' => $name,
-                'unit_id' => $unitId,
-                'type' => $type,
+                'name' => $inventoryDto->name,
+                'unit_id' => $inventoryDto->unitId,
+                'type' => $inventoryDto->type,
             ]);
 
-            foreach($owners as $userId){
+            foreach($inventoryDto->owners as $userId){
                 InventorySharing::create([
                     'inventory_id' => $inventory->id,
                     'user_id' => $userId,
@@ -47,17 +48,17 @@ class InventoryService{
         }
     }
 
-    public function update($id, $name, $unitId, $type, $owners){
+    public function update($id, InventoryDto $inventoryDto){
         DB::beginTransaction();
         try{
             Inventory::find($id)->update([
-                'name' => $name,
-                'unit_id' => $unitId,
-                'type' => $type,
+                'name' => $inventoryDto->name,
+                'unit_id' => $inventoryDto->unitId,
+                'type' => $inventoryDto->type,
             ]);
 
             InventorySharing::whereInventoryId($id)->delete();
-            foreach($owners as $userId){
+            foreach($inventoryDto->owners as $userId){
                 InventorySharing::create([
                     'inventory_id' => $id,
                     'user_id' => $userId,

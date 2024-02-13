@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Modules\Staffing\Services\UnitService;
 use Modules\Inventory\Services\InventoryService;
 use Modules\Inventory\App\DataTables\InventoryDataTable;
+use Modules\Inventory\App\DataTransferObjects\InventoryDto;
 use Modules\Inventory\App\Http\Requests\StoreInventoryRequest;
 
 class InventoryController extends Controller
@@ -32,12 +33,8 @@ class InventoryController extends Controller
 
     public function store(StoreInventoryRequest $request){
         try{
-            $this->service->store(
-                $request->name,
-                $request->unit_id,
-                $request->type,
-                $request->owners ?? [],
-            );
+            $inventoryDto = InventoryDto::fromAppRequest($request);
+            $this->service->store($inventoryDto);
 
             return to_route('inventory.master.index')
                 ->with('success', 'Sukses menambah inventaris');
@@ -58,20 +55,16 @@ class InventoryController extends Controller
     public function update(StoreInventoryRequest $request, $id){
         try{
             $this->service->verifyInventoryDataExistsById($id);
-            $this->service->update(
-                $id,
-                $request->name,
-                $request->unit_id,
-                $request->type,
-                $request->owners ?? [],
-            );
+
+            $inventoryDto = InventoryDto::fromAppRequest($request);
+            $this->service->update($id, $inventoryDto);
 
             return to_route('inventory.master.index')
-                    ->with('success', 'Sukses mengubah inventaris');
+                ->with('success', 'Sukses mengubah inventaris');
         }catch(Exception $e){
             return back()
-                    ->withInput()
-                    ->with('error', $e->getMessage());
+                ->withInput()
+                ->with('error', $e->getMessage());
         }
     }
 
