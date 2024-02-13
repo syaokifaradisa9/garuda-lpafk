@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Unit;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Modules\Staffing\Services\UnitService;
 use Modules\Staffing\Services\UserService;
 use Modules\Staffing\App\DataTables\UserDataTable;
@@ -87,6 +88,23 @@ class UserController extends Controller
                 'code' => 200,
                 'status' => 'success',
                 'message' =>'Sukses menghapus pegawai'
+            ]);
+        }catch(Exception $e){
+            return response()->json([
+                'code' => $e->getCode(),
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    public function getUserByUnit(Request $request){
+        try{
+            $data = $this->service->getUsersByUnitId($request->unit_id);
+            return response()->json([
+                'code' => 200,
+                'status' => 'success',
+                'data' => $data,
             ]);
         }catch(Exception $e){
             return response()->json([

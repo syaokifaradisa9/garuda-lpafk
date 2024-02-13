@@ -16,12 +16,12 @@
                     <h5 class="card-title">Tabel Data Inventaris</h5>
                 </div>
                 <div class="col">
-                    {{-- <a
+                    <a
                         href="{{ route('inventory.master.create') }}"
                         class="btn icon icon-left btn-success float-end">
                         <i class="bi bi-plus"></i>
                         Tambah Inventaris
-                    </a> --}}
+                    </a>
                 </div>
             </div>
             <hr>

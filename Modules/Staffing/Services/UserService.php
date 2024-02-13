@@ -12,6 +12,15 @@ class UserService{
         }
     }
 
+    public function getUsersByUnitId($unitId){
+        return User::whereUnitId($unitId)->get()->map(function($user){
+            return [
+                'id' => $user->id,
+                'name' => $user->name,
+            ];
+        });
+    }
+
     public function store($name, $email, $phone, $nip, $unitId){
         try{
             User::create([
