@@ -15,7 +15,7 @@
         <li
             class="sidebar-item @if(URLHelper::has('master')) active @endif">
             <a href="{{ route('inventory.master.index') }}" class='sidebar-link'>
-                <i class="bi bi-grid-fill"></i>
+                <i class="bi bi-boxes"></i>
                 <span>Inventaris</span>
             </a>
         </li>

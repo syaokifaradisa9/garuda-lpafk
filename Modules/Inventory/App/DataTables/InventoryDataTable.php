@@ -30,9 +30,13 @@ class InventoryDataTable extends DataTable
                 return implode(", ", $owners);
             })
             ->addColumn('action', function($inventory){
-                $editRoute = '';
+                $editRoute = route('inventory.master.edit', [
+                    'id' => $inventory->id,
+                ]);
 
-                $duplicateRoute = '';
+                $duplicateRoute = route('inventory.master.duplicate', [
+                    'id' => $inventory->id,
+                ]);
 
                 return "
                     <a href='$duplicateRoute' class='text-success'>Duplikat</a>
@@ -59,7 +63,7 @@ class InventoryDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('inventory-table')
+                    ->setTableId('inventory-datatable')
                     ->columns($this->getColumns())
                     ->minifiedAjax();
     }
