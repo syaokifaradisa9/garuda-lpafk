@@ -37,15 +37,14 @@
         $(document).ready(function(){
             $(document).on('click', '.btn-delete', function(event){
                 event.preventDefault();
-                var userId = $(this).attr('id');
+                var inventoryId = $(this).attr('id');
                 
                 confirmAlert(
                     "Konfirmasi Hapus Data",
                     "Yakin menghapus data?",
                     async function(){
-                        console.log(`${window.location.href}/${userId}/delete`);
                         const response = await fetch(
-                            `${window.location.href}/${userId}/delete`,
+                            `${window.location.href}/${inventoryId}/delete`,
                             {
                                 method: "GET",
                                 headers: {
@@ -57,7 +56,7 @@
                         const json = await response.json();
                         Swal.fire({icon: json.status, title: json.title, text: json.message});
                         if(json.status == 'success'){
-                            $('#user-datatable').DataTable().ajax.reload();
+                            $('#inventory-datatable').DataTable().ajax.reload();
                         }
                     }
                 );

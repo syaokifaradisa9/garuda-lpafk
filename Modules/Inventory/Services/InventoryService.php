@@ -8,6 +8,10 @@ use Modules\Inventory\App\Models\Inventory;
 use Modules\Inventory\App\Models\InventorySharing;
 
 class InventoryService{
+    public function verifyInventoryDataExistsById($id){
+        return Inventory::where('id', $id)->exists();
+    }
+
     public function store($name, $unitId, $type, $owners){
         DB::beginTransaction();
         try{
@@ -28,6 +32,18 @@ class InventoryService{
         }catch(Exception $e){
             DB::rollBack();
             throw new Exception('Terjadi kesalahan di sisi server!', 500);
+        }
+    }
+
+    public function delete($id){
+        DB::beginTransaction();
+        try{
+            InventorySharing::where('inventory_id', $id)->delete();
+            Inventory::find($id)->delete();
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollBack();
+            throw new Exception("Terjadi kesalahan di sisi server", 500);
         }
     }
 }

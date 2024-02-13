@@ -47,4 +47,22 @@ class InventoryController extends Controller
                     ->with('error', $e->getMessage());
         }
     }
+
+    public function delete($id){
+        try{
+            $this->service->verifyInventoryDataExistsById($id);
+            $this->service->delete($id);
+            return response()->json([
+                'code' => 200,
+                'status' => 'success',
+                'message' =>'Sukses menghapus inventaris'
+            ]);
+        }catch(Exception $e){
+            return response()->json([
+                'code' => $e->getCode(),
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
 }

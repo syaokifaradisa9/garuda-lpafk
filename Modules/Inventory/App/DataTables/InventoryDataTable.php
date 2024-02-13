@@ -63,7 +63,7 @@ class InventoryDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('inventory-table')
+                    ->setTableId('inventory-datatable')
                     ->columns($this->getColumns())
                     ->minifiedAjax();
     }
