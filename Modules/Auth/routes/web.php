@@ -16,5 +16,6 @@ Route::controller(AuthController::class)->group(function(){
 
     Route::middleware('auth')->group(function(){
         Route::get('gateway', 'gateway')->name('gateway');
+        Route::get('logout', 'logout')->name('logout');
     });
 });

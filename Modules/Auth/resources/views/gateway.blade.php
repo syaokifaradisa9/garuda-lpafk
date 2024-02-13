@@ -165,7 +165,7 @@
             <p>Helpdesk IT</p>
         </a>
 
-        <a href="#" class="card inventory">
+        <a href="{{ route('inventory.dashboard') }}" class="card inventory">
             <div class="overlay"></div>
             <img
                 style="width: 130px"

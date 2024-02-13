@@ -40,6 +40,9 @@ Route::prefix('staffing')
                     Route::put('update', 'update')->name('update');
                     Route::get('delete', 'delete');
                 });
+
+                // API
+                Route::get('getByUnit', 'getUserByUnit');
             }
         );
     }
