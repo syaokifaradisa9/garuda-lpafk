@@ -48,6 +48,33 @@ class InventoryController extends Controller
         }
     }
 
+    public function edit($id){
+        $inventory = $this->service->getById($id);
+        $units = $this->unitService->getAllUnit();
+
+        return view('inventory::inventory.create', compact('units', 'inventory'));
+    }
+
+    public function update(StoreInventoryRequest $request, $id){
+        try{
+            $this->service->verifyInventoryDataExistsById($id);
+            $this->service->update(
+                $id,
+                $request->name,
+                $request->unit_id,
+                $request->type,
+                $request->owners ?? [],
+            );
+
+            return to_route('inventory.master.index')
+                    ->with('success', 'Sukses mengubah inventaris');
+        }catch(Exception $e){
+            return back()
+                    ->withInput()
+                    ->with('error', $e->getMessage());
+        }
+    }
+
     public function delete($id){
         try{
             $this->service->verifyInventoryDataExistsById($id);

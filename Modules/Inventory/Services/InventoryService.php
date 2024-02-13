@@ -12,6 +12,18 @@ class InventoryService{
         return Inventory::where('id', $id)->exists();
     }
 
+    public function getById($id){
+        $inventory = Inventory::with('inventory_sharing')->find($id);
+
+        return [
+            'id'      => $inventory->id,
+            'name'    => $inventory->name,
+            'unit_id' => $inventory->unit_id,
+            'type'    => $inventory->type,
+            'owners'  => $inventory->inventory_sharing->pluck("user_id")->toArray()
+        ];
+    }
+
     public function store($name, $unitId, $type, $owners){
         DB::beginTransaction();
         try{
@@ -24,6 +36,30 @@ class InventoryService{
             foreach($owners as $userId){
                 InventorySharing::create([
                     'inventory_id' => $inventory->id,
+                    'user_id' => $userId,
+                ]);
+            }
+
+            DB::commit();
+        }catch(Exception $e){
+            DB::rollBack();
+            throw new Exception('Terjadi kesalahan di sisi server!', 500);
+        }
+    }
+
+    public function update($id, $name, $unitId, $type, $owners){
+        DB::beginTransaction();
+        try{
+            Inventory::find($id)->update([
+                'name' => $name,
+                'unit_id' => $unitId,
+                'type' => $type,
+            ]);
+
+            InventorySharing::whereInventoryId($id)->delete();
+            foreach($owners as $userId){
+                InventorySharing::create([
+                    'inventory_id' => $id,
                     'user_id' => $userId,
                 ]);
             }

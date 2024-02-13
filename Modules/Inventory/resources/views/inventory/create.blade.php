@@ -5,7 +5,7 @@
 
 @php
     $cardTitle = URLHelper::has('edit') ? 'Form Edit Inventaris' : 'Form Tambah Inventaris';
-    $formUrl = URLHelper::has('edit') ? route('inventory.master.update', ['id' => $inventory->id]) : route('inventory.master.store');
+    $formUrl = URLHelper::has('edit') ? route('inventory.master.update', ['id' => $inventory['id']]) : route('inventory.master.store');
 @endphp
 
 @section('content')
@@ -35,7 +35,7 @@
                         class="form-control @error('name') is-invalid @enderror"
                         type="text"
                         placeholder="Masukkan Nama Barang"
-                        value="{{ old('name') ?? $user->name ?? '' }}">
+                        value="{{ old('name') ?? $inventory['name'] ?? '' }}">
                     @error('name')
                         <span class="invalid-feedback mt-2" role="alert">
                             <strong>{{ $message }}</strong>
@@ -50,7 +50,7 @@
                             <option value="" hidden>Pilih unit barang berada</option>
                             @foreach ($units as $unit)
                                 <option value="{{ $unit->id }}"
-                                    @if((old('unit_id') ?? $user->unit_id ?? '') == $unit->id )
+                                    @if((old('unit_id') ?? $inventory['unit_id'] ?? '') == $unit->id )
                                         selected
                                     @endif>
                                     {{ $unit->name }}
@@ -83,7 +83,7 @@
                             <option value="" hidden>Pilih tipe</option>
                             @foreach ($types as $type)
                                 <option value="{{ $type['value'] }}"
-                                    @if((old('type') ?? $inventory->type ?? '') == $type['value'])
+                                    @if((old('type') ?? $inventory['type'] ?? '') == $type['value'])
                                         selected
                                     @endif>
                                     {{ $type['label'] }}
@@ -104,7 +104,7 @@
                         Pilih siapa saja yang menggunakan barang tersebut
                     </small>
                     <p class="d-none" id="old-value-owner">
-                        {{ implode('|', old('owners') ?? []) }}
+                        {{ implode('|', old('owners') ?? $inventory['owners'] ?? []) }}
                     </p>
                     <div class="form-group pt-2" id="inventory_sharing-checkbox">
                         
