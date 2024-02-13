@@ -70,14 +70,14 @@
                                     Setting
                                 </li>
                                 <li
-                                    class="sidebar-item @if(URLHelper::has('unit')) active @endif">
+                                    class="sidebar-item">
                                     <a href="{{ route('gateway') }}" class='sidebar-link'>
                                         <i class="bi bi-arrow-left-right"></i>
                                         <span>Ganti Aplikasi</span>
                                     </a>
                                 </li>
                                 <li
-                                    class="sidebar-item @if(URLHelper::has('user')) active @endif">
+                                    class="sidebar-item">
                                     <a href="{{ route('logout') }}" class='sidebar-link'>
                                         <i class="bi bi-box-arrow-left"></i>
                                         <span>Logout</span>
