@@ -16,21 +16,30 @@
         <link rel="stylesheet" href="{{ asset('assets/fonts/iconly/iconly.css') }}">
 
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+        <style>
+            .sidebar-header {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+        </style>
     </head>
     <body>
         <script src="{{ asset('assets/js/initTheme.js') }}"></script>
             <div id="app">
                 <div id="sidebar">
                     <div class="sidebar-wrapper active">
-                        <div class="sidebar-header position-relative">
+                        <div class="sidebar-header position-relative mb-0 pb-0">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="logo">
-                                    <a href="index.html">
+                                    <a href="#">
                                         <img src="{{ asset('assets/img/logo/logo.png') }}" style="height: 90px;">
                                     </a>
                                 </div>
                             </div>
-                            <div class="theme-toggle d-flex gap-2 align-items-center bg-ino">
+                            <div class="theme-toggle d-flex gap-2 align-items-center bg-ino mt-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
                                     role="img" class="iconify iconify--system-uicons" width="20" height="20"
                                     preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
