@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Permission;
 use Modules\Archieve\Enums\ArchieveUserRole;
 use Modules\Archieve\Enums\ArchieveUserPermission;
 use Modules\Archieve\Database\Seeders\ClassificationCodeSeeder;
+use Modules\Archieve\Database\Seeders\SpecificClassificationCodeSeeder;
 
 class ArchieveDatabaseSeeder extends Seeder
 {
@@ -41,6 +42,7 @@ class ArchieveDatabaseSeeder extends Seeder
         $this->call([
             ClassificationCodeSeeder::class,
             SubClassificationCodeSeeder::class,
+            SpecificClassificationCodeSeeder::class
         ]);
     }
 }
