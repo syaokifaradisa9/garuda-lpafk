@@ -10,8 +10,8 @@ return new class extends Migration
     {
         Schema::create('classification_codes', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->unique();
-            $table->string('name')->nullable();
+            $table->string('main_code')->unique();
+            $table->string('main_name')->nullable();
         });
     }
 

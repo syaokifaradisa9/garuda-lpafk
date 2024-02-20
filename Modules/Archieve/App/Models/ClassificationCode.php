@@ -10,7 +10,7 @@ class ClassificationCode extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'code',
-        'name',
+        'main_code',
+        'main_name',
     ];
 }

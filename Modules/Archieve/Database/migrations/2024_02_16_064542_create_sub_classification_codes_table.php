@@ -12,8 +12,8 @@ return new class extends Migration
     {
         Schema::create('sub_classification_codes', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
-            $table->string('name');
+            $table->string('sub_code');
+            $table->string('sub_name');
             $table->foreignIdFor(ClassificationCode::class)
                 ->constrained()
                 ->onDelete('cascade');

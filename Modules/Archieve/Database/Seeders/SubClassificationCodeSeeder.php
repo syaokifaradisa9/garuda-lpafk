@@ -347,12 +347,12 @@ class SubClassificationCodeSeeder extends Seeder
         ];
 
         foreach($subClassificationCodes as $classificationCode => $subClassificationCodevalues){
-            $classificationCodeId = ClassificationCode::whereCode($classificationCode)->first()->id;
+            $classificationCodeId = ClassificationCode::whereMainCode($classificationCode)->first()->id;
             foreach($subClassificationCodevalues as $subClassificationCodevalue){
                 SubClassificationCode::create([
                     'classification_code_id' => $classificationCodeId,
-                    'code' => $subClassificationCodevalue['code'],
-                    'name' => $subClassificationCodevalue['name'],
+                    'sub_code' => $subClassificationCodevalue['code'],
+                    'sub_name' => $subClassificationCodevalue['name'],
                 ]);
             }
         }

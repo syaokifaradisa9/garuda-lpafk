@@ -11,7 +11,11 @@ class SubClassificationCode extends Model
     public $timestamps = false;
     protected $fillable = [
         'classification_code_id',
-        'code',
-        'name',
+        'sub_code',
+        'sub_name',
     ];
+
+    public function classification_code(){
+        return $this->belongsTo(ClassificationCode::class);
+    }
 }

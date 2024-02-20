@@ -70,8 +70,8 @@ class ClassificationCodeSeeder extends Seeder
 
         foreach($codes as $code => $name){
             ClassificationCode::create([
-                'code' => $code,
-                'name' => $name,
+                'main_code' => $code,
+                'main_name' => $name,
             ]);
         }
     }
