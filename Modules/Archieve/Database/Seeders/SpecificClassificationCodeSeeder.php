@@ -122,8 +122,8 @@ class SpecificClassificationCodeSeeder extends Seeder
                     SpecificClassificationCode::create([
                         'sub_classification_code_id' => $subClassificationCodeId,
                         'specific_code' => sprintf("%02d", $index),
-                        'name' => $specificCode,
-                        'description' => null,
+                        'specific_name' => $specificCode,
+                        'specific_description' => null,
                     ]);
                 }
             }

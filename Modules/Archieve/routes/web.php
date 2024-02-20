@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Archieve\App\Http\Controllers\DashboardController;
 use Modules\Archieve\App\Http\Controllers\MainCodeController;
+use Modules\Archieve\App\Http\Controllers\SpecificClassificationCodeController;
 use Modules\Archieve\App\Http\Controllers\SubCodeController;
 
 Route::prefix('archieve')
@@ -26,6 +27,15 @@ Route::prefix('archieve')
                 Route::prefix('sub')
                     ->name('sub.')
                     ->controller(SubCodeController::class)
+                    ->group(function(){
+                        Route::get('/', 'index')->name('index');
+                    }
+                );
+
+                // Sub Masalah
+                Route::prefix('specific')
+                    ->name('specific.')
+                    ->controller(SpecificClassificationCodeController::class)
                     ->group(function(){
                         Route::get('/', 'index')->name('index');
                     }

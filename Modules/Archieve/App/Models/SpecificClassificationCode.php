@@ -12,11 +12,11 @@ class SpecificClassificationCode extends Model
     protected $fillable = [
         'sub_classification_code_id',
         'specific_code',
-        'name',
-        'description'
+        'specific_name',
+        'specific_description'
     ];
 
-    public function sub_classification(){
+    public function sub_classification_code(){
         return $this->belongsTo(SubClassificationCode::class);
     }
 }

@@ -13,8 +13,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(SubClassificationCode::class)->constrained();
             $table->string('specific_code');
-            $table->string('name');
-            $table->text('description')->nullable();
+            $table->string('specific_name');
+            $table->text('specific_description')->nullable();
         });
     }
 

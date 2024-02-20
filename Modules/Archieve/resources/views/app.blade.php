@@ -34,9 +34,9 @@
                         Sub Masalah
                     </a>
                 </li>
-                <li class="submenu-item @if(URLHelper::has('code|sub-sub'))) active @endif">
+                <li class="submenu-item @if(URLHelper::has('code|specific'))) active @endif">
                     <a
-                        href=""
+                        href="{{ route('archieve.code.specific.index') }}"
                         class="submenu-link">
                         Sub Sub Masalah
                     </a>
