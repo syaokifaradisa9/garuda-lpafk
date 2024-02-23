@@ -1,5 +1,6 @@
 {
     "Auth": true,
     "Staffing": true,
-    "Inventory": true
+    "Inventory": true,
+    "Archieve": true
 }

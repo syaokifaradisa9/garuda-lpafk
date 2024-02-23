@@ -12,9 +12,16 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'name' => "Muhammad Syaoki Faradisa",
-                'phone' => '082149411670',
-                'nip' => "1234567890123",
+                'phone' => '',
+                'nip' => "",
                 'email' => 'syaokifaradisa09@gmail.com',
+                'unit_id' => 1,
+            ],
+            [
+                'name' => "Desy Fajrianti Ramadhaniah",
+                'phone' => '',
+                'nip' => "",
+                'email' => 'dessy.kps@gmail.com',
                 'unit_id' => 1,
             ]
         ];
