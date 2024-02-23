@@ -383,6 +383,24 @@ class SubClassificationCodeSeeder extends Seeder
                     'name' => 'Pengawasan, Pengamatan, Penelitian atau Pemeriksaan (Wasmatlistrik) dan penanganan pengaduan Masyarakat'
                 ]
             ],
+            'FP' => [
+                [
+                    'code' => '01',
+                    'name' => 'Sertifikasi dan Pembinaan Sarana Produksi dan Distribusi Farmasi'
+                ],[
+                    'code' => '02',
+                    'name' => 'Pengendalian Harga dan Pemantauan Pasar obat'
+                ],[
+                    'code' => '03',
+                    'name' => 'Penilaian Farmakoekonomi'
+                ],[
+                    'code' => '04',
+                    'name' => 'Narkotika, Psikotropika, Prekursor Farmasi, dan Special Access Scheme'
+                ],[
+                    'code' => '05',
+                    'name' => 'Seleksi Fitofarmaka dan Pembinaan Industri dan Usaha Obat Tradisional'
+                ]
+            ],
             'FR' => [
                 [
                     'code' => '01',
