@@ -149,7 +149,7 @@
 	<body>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-        <a href="#" class="card archieve">
+        <a href="{{ route('archieve.dashboard') }}" class="card archieve">
             <div class="overlay"></div>
             <img
                 style="width: 130px"
